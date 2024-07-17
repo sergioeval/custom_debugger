@@ -1,24 +1,24 @@
 import logging
 from datetime import datetime
-
-# Logging file configuration
-# log_file_name = "loggFile.log"
-# logging.basicConfig(filename=log_file_name, filemode='w',
-#                     level=logging.INFO,
-#                     format='%(asctime)s ################################## %(levelname)s ##################################\n%(message)s')
+import os
 
 
 class Logging_Configuration:
     """
     to configure my owne logger
+    logg_path parameter must end with /
     """
 
-    def __init__(self):
+    def __init__(self, logg_path="./"):
+        self.logg_path = logg_path
         self.run_time_stamp = datetime.now()
         self.string_timestamp = self.run_time_stamp.strftime("%Y%m%d_%H%M%S")
-        self.logg_file_name = f"logg_data_{self.string_timestamp}.log"
+        self.logg_file_name = f"{self.logg_path}logg_data_{
+            self.string_timestamp}.log"
 
     def conf(self):
+        if not os.path.exists(self.logg_path):
+            os.makedirs(self.logg_path)
         logging.basicConfig(filename=self.logg_file_name,
                             filemode='w',
                             level=logging.INFO,
