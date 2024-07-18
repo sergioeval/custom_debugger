@@ -13,8 +13,7 @@ class Logging_Configuration:
         self.logg_path = logg_path
         self.run_time_stamp = datetime.now()
         self.string_timestamp = self.run_time_stamp.strftime("%Y%m%d_%H%M%S")
-        self.logg_file_name = f"{self.logg_path}logg_data_{
-            self.string_timestamp}.log"
+        self.logg_file_name = f"{self.logg_path}logg_data_{self.string_timestamp}.log"
 
     def conf(self):
         if not os.path.exists(self.logg_path):
