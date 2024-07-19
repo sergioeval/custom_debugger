@@ -1,2 +1,3 @@
 INFO_TEMPLATE = "THIS FUNCTION EXECUTED OK: {fn_name}\nFROM THIS FILE: {fn_file_name}"
 ERROR_TEMPLATE = "FUNCTION FAILED: {fn_name}\nFROM THIS FILE: {fn_file_name}\nEXCEPTION RAISED BY EXECUTION: {error}"
+# comment
