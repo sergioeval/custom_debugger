@@ -3,15 +3,17 @@ import logging
 from .custom_exception import FailedCustomException
 from .log_templates import INFO_TEMPLATE, ERROR_TEMPLATE
 
-logger = logging.getLogger()
+# logger = logging.getLogger()
 
 
 def custom_debugger(fn):
+    logger = logging.getLogger(__name__)
+
     @wraps(fn)
     def inner(*args, **kwargs):
         """logg data"""
         try:
-            print(f"Function Executed OK: {fn.__qualname__}")
+            # print(f"Function Executed OK: {fn.__qualname__}")
             # print(fn.__dir__())
             logger.info(INFO_TEMPLATE.format(
                 fn_name=fn.__qualname__,
@@ -25,6 +27,6 @@ def custom_debugger(fn):
                 error=e
             ))
             raise FailedCustomException(
-                message=f"EXCEPTION RAISED BY EXECUTION: {e}")
+                message=f"EXCEPTION RAISED BY THIS EXCEPTION: {e}")
 
     return inner
